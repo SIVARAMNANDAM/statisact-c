@@ -1,11 +1,18 @@
-#include "stats.h"
+#ifndef stats
+#define stats
 
-struct Stats compute_statistics(const float* numberset, int setlength) {
-    struct Stats s;
-    s.average = 0;
-    s.min = 0;
-    s.max = 0;
-}
+//defining the structure
+#define NAN 0.0f
+struct Stats{
+    float average;
+    float min;
+    float max;
+};
+struct Stats compute_statistics(const float* numberset, int setlength);
 
-int emailAlertCallCount = 0;
-int ledAlertCallCount = 0;
+typedef void (*alerter_funcptr)();
+void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats);
+
+extern int emailAlertCallCount;
+extern int ledAlertCallCount;
+#endif
