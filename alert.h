@@ -1,5 +1,5 @@
-#ifndef ALERTER_H_
-#define ALERTER_H_
+#ifndef ALERT_H_
+#define ALERT_H_
 
 #define NULL_PTR  (void*)0
 
@@ -13,4 +13,4 @@ void ledAlerter(void);
 extern int emailAlertCallCount;
 extern int ledAlertCallCount;
 
-#endif /* ALERTER_H_ */
+#endif /* ALERT_H_ */
