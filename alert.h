@@ -1,7 +1,2 @@
-#ifndef alert
-#define alert
-
-#include "stats.h"
-void emailAlerter();
-void ledAlerter();
-#endif
+void emailAlerter(void);
+void ledAlerter(void);
