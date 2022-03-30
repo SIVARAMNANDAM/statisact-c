@@ -9,5 +9,3 @@ void ledAlerter(void);
 
 extern int emailAlertCallCount;
 extern int ledAlertCallCount;
-
-#endif /* ALERT_H_ */
