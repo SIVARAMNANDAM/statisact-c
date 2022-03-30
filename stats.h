@@ -1,3 +1,4 @@
+//updated
 struct Stats
 {
 	float average;
