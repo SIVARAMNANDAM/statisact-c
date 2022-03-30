@@ -8,5 +8,3 @@ struct Stats
 #define NULL_VALUE 0
 
 struct Stats compute_statistics(const float* numberset, int setlength);
- 
-#endif
