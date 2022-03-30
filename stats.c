@@ -1,48 +1,35 @@
 #include "stats.h"
-
-struct Stats compute_statistics(float* numberset, int setlength) {
-    int index=0;
-    float sum;
-    struct Stats super;
-    /* calling this function to sort float array from min to max range order */
-    numberset = compute_sort(numberset, setlength);
-    /* min value update */
-    super.min = numberset[index];
-    /* loop to find the sum */
-    for(;index<setlength;index++)
-    {
-        sum += numberset[index];
-    }
-    /* average calculation */
-    super.average = sum/setlength;
-    /* max value update */
-    super.max = numberset[index-1];
-    /* return the updated structure variable */
-    return super;
-}
-
-float* compute_sort(float* numset, int length)
+#include <math.h>
+struct Stats compute_statistics(const float* numberset, int setlength)
 {
-    int loop_1=0, loop_2;
-    float temp_var=0;
-    /* outer loop using length based iteration */
-    for(;loop_1<length;loop_1++)
-    {
-        /* internal loop to compare each value with all array values */
-        for(loop_2=0;loop_2<length;loop_2++)
-        {
-            if(numset[loop_1]<numset[loop_2])
-            {
-                /* rearrange the array order when the condition is true */
-                temp_var = numset[loop_1];
-                numset[loop_1] = numset[loop_2];
-                numset[loop_2] = temp_var;
-            }
-        }
-    }
-    /* return the updated float value */
-    return numset;
-}
+	struct Stats s;
+	float var = 0;
+	if((numberset == NULL) || (setlength == NULL_VALUE))
+	{
+		/**Invalid arguments**/
+		s.average = NAN;
+		s.max = NAN;
+		s.min = NAN;
+	}/*end of if*/
 
-int emailAlertCallCount = 0;
-int ledAlertCallCount = 0;
+	else
+	{
+		/**Valid arguments**/
+		s.min = numberset[0];
+		s.max = numberset[0];
+		for(int i = 0; i < setlength ; i++)
+		{
+			var += numberset[i];
+			/**Get the min value**/
+			if(s.min > numberset[i] )
+				s.min = numberset[i];
+			/**Get the max value**/
+			if(s.max < numberset[i] )
+				s.max = numberset[i];
+		}/*end of for loop*/
+		s.average = var / setlength;
+
+	}/*end of else*/
+
+	return s;
+}
